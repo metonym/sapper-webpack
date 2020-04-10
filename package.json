@@ -1,0 +1,20 @@
+{
+  "name": "sapper-webpack",
+  "description": "Custom Sapper webpack template",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "develop": "sapper dev",
+    "build": "sapper export"
+  },
+  "dependencies": {
+    "polka": "next",
+    "sirv": "^0.4.0"
+  },
+  "devDependencies": {
+    "@metonym/sapper": "^0.27.12",
+    "svelte": "^3.0.0",
+    "svelte-loader": "^2.9.0",
+    "webpack": "^4.7.0"
+  }
+}
