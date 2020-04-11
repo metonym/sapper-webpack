@@ -5,7 +5,9 @@
   "private": true,
   "scripts": {
     "develop": "sapper dev",
-    "build": "sapper export"
+    "build": "sapper export",
+    "postbuild": "node postbuild",
+    "deploy": "node gh-pages"
   },
   "dependencies": {
     "polka": "next",
@@ -13,6 +15,9 @@
   },
   "devDependencies": {
     "@metonym/sapper": "^0.27.12",
+    "fast-glob": "^3.2.2",
+    "gh-pages": "^2.2.0",
+    "posthtml": "^0.12.0",
     "svelte": "^3.0.0",
     "svelte-loader": "^2.9.0",
     "webpack": "^4.7.0"
