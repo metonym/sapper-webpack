@@ -5,8 +5,7 @@
   "private": true,
   "scripts": {
     "develop": "sapper dev",
-    "build": "sapper export",
-    "postbuild": "node postbuild",
+    "build": "sapper export --basepath sapper-webpack",
     "deploy": "node gh-pages"
   },
   "dependencies": {
@@ -15,9 +14,7 @@
   },
   "devDependencies": {
     "@metonym/sapper": "^0.27.12",
-    "fast-glob": "^3.2.2",
     "gh-pages": "^2.2.0",
-    "posthtml": "^0.12.0",
     "svelte": "^3.0.0",
     "svelte-loader": "^2.9.0",
     "webpack": "^4.7.0"
