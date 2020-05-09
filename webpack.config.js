@@ -2,6 +2,9 @@ const webpack = require("webpack");
 const path = require("path");
 const config = require("@metonym/sapper/config/webpack.js");
 const pkg = require("./package.json");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const AutoprefixerPlugin = require("autoprefixer");
 
 const mode = process.env.NODE_ENV || "production";
 const dev = mode === "development";
@@ -31,10 +34,30 @@ module.exports = {
             },
           },
         },
+        {
+          test: [/\.s[ac]ss$/i, /\.css$/],
+          use: [
+            !dev ? MiniCssExtractPlugin.loader : "style-loader",
+            "css-loader",
+            {
+              loader: "postcss-loader",
+              options: {
+                plugins: [
+                  AutoprefixerPlugin({
+                    overrideBrowserslist: ["last 1 version", "ie >= 11"],
+                  }),
+                ],
+              },
+            },
+            "sass-loader",
+          ],
+        },
       ],
     },
     mode,
     plugins: [
+      new MiniCssExtractPlugin({ filename: "[name].[chunkhash].css" }),
+      new OptimizeCssAssetsPlugin({}),
       // pending https://github.com/sveltejs/svelte/issues/2377
       // dev && new webpack.HotModuleReplacementPlugin(),
       new webpack.DefinePlugin({
